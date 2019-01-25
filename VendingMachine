@@ -1,0 +1,101 @@
+//This program emulates a vending machine that offers five products and takes specific change
+
+import java.util.Scanner;
+public class VendingMachine{
+            public static void main(String[] args) {
+
+            Scanner input = new Scanner(System.in);
+            
+            int totalSum, snaxSelection, counter;
+            String inputChange;
+              
+            System.out.println("~¡!Welcome !¡~");
+            System.out.println("This program simulates a vending machine.");
+            System.out.println("Please insert your change. Note, we only accept U.S. cent pieces and one and five dollar bills.");
+            System.out.println("To insert change, type in a value such as 'penny', 'dime', or 'five dollars' at the prompt'");
+            inputChange=input.nextLine();
+            totalSum = 0;
+            
+            while(! inputChange.equals("0")){
+              if (inputChange.equalsIgnoreCase("penny")){
+              totalSum = totalSum +1;}
+              else if (inputChange.equalsIgnoreCase("nickel")){
+                totalSum = totalSum + 5;}
+              else if (inputChange.equalsIgnoreCase("dime")){
+                totalSum = totalSum + 10;}
+              else if (inputChange.equalsIgnoreCase("quarter")){
+                totalSum = totalSum + 25;}
+              else if (inputChange.equalsIgnoreCase("dollar")){
+                totalSum = totalSum + 100;}
+              else if (inputChange.equalsIgnoreCase("one dollar")){
+                totalSum = totalSum + 100;}
+              else if (inputChange.equalsIgnoreCase("five dollar")){
+                totalSum = totalSum + 500;}
+              else if (inputChange.equalsIgnoreCase("five dollars")){
+                totalSum = totalSum + 500;}
+              else {
+                System.out.println("There has been an error. Please note we only accept pennies, nickles, dimes, quarters,and one and five dollar bills.");
+                System.out.println("What you entered did not register as being one of those items.");
+                System.out.println(" ");}
+                
+                  System.out.println("Thank you. I am ready to accept more change.");
+                  System.out.println("Please enter another coin or bill. Type '0' to complete your order");
+                  inputChange=input.nextLine();}
+
+System.out.println("The total you inserted is " + (totalSum/100) + " dollar(s) and " + (totalSum%100) + " cent(s). ");
+System.out.println("Please hit a button for one of our refreshments or snacks.");
+System.out.println("1) Can of Cola - A crisp and refershing drink. $1");
+System.out.println("2) Bag of Pretzels - salty, delectible nubs. $1");
+System.out.println("3) Blueberry Quinoa Kale Crisps - organic, non-GMO, only tested on pets with their own instagram. $3");
+System.out.println("4) Boxed Martini - It's one of those days. $5");
+System.out.println("5) Bar of Gold - An actual bar of gold. You badly want to impress the ladies and gents around you. $45,875.13");
+System.out.println("Please make your selection by entering the number 1-5 now. Press 0 at any time to cancel and have change returned");
+snaxSelection=input.nextInt();
+
+counter = 1;
+        while(counter < 4){
+              if (snaxSelection == 1){
+                if (totalSum >= 100){
+                  totalSum = totalSum -100;}
+                else {
+                  System.out.println("This purchase is greater than the amount you have entered. Cannot be dispensed.");}}
+              
+              else if (snaxSelection ==2){
+                if (totalSum >= 100){
+                  totalSum = totalSum -100;}
+                else { 
+                  System.out.println("This purchase is greater than the amount you have entered. Cannot be dispensed.");}}
+              
+              else if(snaxSelection ==3){
+                if (totalSum >= 300){
+                  totalSum = totalSum -300;}
+                else {
+                  System.out.println("This purchase is greater than the amount you have entered. Cannot be dispensed.");}}
+              
+              else if (snaxSelection ==4){
+                if (totalSum >= 500){
+                  totalSum = totalSum -500;}
+                else {
+                  System.out.println("This purchase is greater than the amount you have entered. Cannot be dispensed.");}}
+              
+              else if (snaxSelection ==5){
+                if (totalSum > 4587513){
+                  totalSum = totalSum -4587513;}
+                else {
+                  System.out.println("This purchase is greater than the amount you have entered. Cannot be dispensed.");}}
+              
+              else if (snaxSelection ==0){
+                break;}
+              
+              else {
+                System.out.println("There has been an error in your selection. Please try again.");}
+              System.out.println("You may choose another selection or hit '0' to cancel");
+              snaxSelection=input.nextInt();
+              counter++ ;}
+        
+        System.out.println("Thank you for your purchase.");
+        System.out.println("Here is your change of " + (totalSum/100) + " dollar(s) and " + (totalSum%100) + " cent(s). ");
+        
+            }
+}
+     
