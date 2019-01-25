@@ -1,0 +1,55 @@
+//Programming Problem 3 – Broken GPS
+Consider yourself driving with 60 miles/hour in a city that has only grid like streets, and your GPS is broken. 
+The specifications of the problem are:
+•	With (x, y) as the coordinates of the car, consider the initial position (0,0).
+•	At each intersection, the only directions available are North, South, East or West
+•	The GPS is broken, and it chooses the direction randomly at each intersection, which happens every 5 minutes
+•	The assumption is that the car has the same speed at all times, including when it changes direction and turns. 
+Write a program that calculates the direct distance from the initial point to the location point of the driver after one hour of driving (i.e. the distance between two points).
+
+
+import java.util.Scanner;
+
+public class BrokenGPS
+{
+  public static void main(String[] args)
+  {
+    int yes, dir1, n1, n2, loc, total;
+    Scanner keyboard = new Scanner (System.in);
+    System.out.println("Your GPS is broken.");
+    System.out.println("You are driving for an hour, and it suggests a random turn every 5 minutes.");
+    System.out.println("You are going 60 MPH.");
+    System.out.println("Ready to see how far you have gotten from where you started? (Type 1 for Yes/2 for No)");
+    yes = keyboard.nextInt();
+    if (yes > 1){ 
+    System.out.println("Too bad. Here we go!"); 
+    }
+    n1 = 0;
+    n2 = 0;
+    loc = 0;
+    total = 0;
+  
+    do {dir1 = (int)(Math.random()*4) + 1;
+    if (dir1 == 1)
+     n1 = n1 + 1;
+    else if (dir1 == 2)
+     n1 = n1 - 1;
+    else if (dir1 == 3)
+     n2 = n2 + 1;
+    else
+    n2 = n2 - 1;
+    loc++;}
+    while (loc < 12); //there are 12 five minute trips in an hour
+    
+    if (n1 <= 0)
+      n1 = n1 * -1;
+          
+    if (n2 <= 0)
+      n2 = n2 * -1;
+
+    total = n1 + n2; 
+    total = total * 5;    //because you were going 60 MPH
+    System.out.println("You are a total of "+ total + " miles from where you originated." );
+
+    }
+}
