@@ -1,0 +1,58 @@
+//This is a program that illustrates Zeller's congruence, an algorithm developed by Christian Zeller to calculate the day of the week.
+//If you enter in any date in history or the future, it will tell you what day of the week it was.
+
+import java.util.Scanner;
+
+public class DayPredictor{
+  public static void main(String[] args) {
+    
+    Scanner input= new Scanner(System.in);
+
+//h is day/week, q is day/month, m is month, n is user input/years, j is years over 100, k is years/century
+
+String dayres;
+
+System.out.println("Hello. This program will give you the day of the week for any date you input. :}");
+System.out.println("Please enter a year (e.g., 2019):");
+int n=input.nextInt();
+System.out.println("a month: (1-12): ");
+int m=input.nextInt();
+System.out.println("and finally the day of the month:");
+int q = input.nextInt();
+
+System.out.println("a month: (1-12): ");
+// the formula has a stipulation for january and february
+if(m == 1){
+m = 13;
+  n = n - 1;}
+else if (m == 2){
+m = 14;
+n = n - 1;}
+else { m = m;}
+int j = n/100;
+int k = n%100;
+
+                   
+//math
+int h = (q + (((26 * m) + 26)/10) + k + (k/4) + (j/4) + 5*j)%7;
+System.out.println(h);
+                     
+if (h == 0)
+dayres = "Saturday";
+else if (h == 1)
+dayres = "Sunday";
+else if (h == 2)
+dayres = "Monday";
+else if (h == 3)
+dayres = "Tuesday";
+else if (h == 4)
+dayres = "Wednesday";
+else if (h == 5)
+dayres = "Thursday";
+else
+dayres = "Friday";
+                     
+                     
+                   
+System.out.println("The day of the week was " + dayres );}
+}
